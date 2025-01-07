@@ -13,7 +13,8 @@ Route::get('/', function () {
 
 
 Route::post('/store',[MemberController::class, 'store'])->name('member.store');
-Route::get('/search',[SearchController::class, 'index'])->name('search');
+Route::get('/search/{id?}',[SearchController::class, 'index'])->name('search');
+Route::post('/search',[SearchController::class, 'search'])->name('search');
 
 
 Route::middleware(['auth', 'admin'])->group(function () {

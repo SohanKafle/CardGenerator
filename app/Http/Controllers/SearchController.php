@@ -7,29 +7,40 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index()
-    {
-        $members = Member::all();
-        return view('search');
-    }
-
-    public function searchResult($name)
-    {
-        // Check if the user is in the session
-        $member = session('user');
-
-        // If the user is not found in the session, try searching the user from the database
-        if (!$member) {
-            // Search the member by name
-            $member = Member::where('name', $name)->first();
-        }
-
-        // If the member is not found, return an error message
-        if (!$member) {
-            return redirect()->route('searchForm')->withErrors('member not found!');
-        }
-
-        // If the member is found, return the membership information page
+    public function index($id = null)
+{
+    if ($id) {
+       
+        $member = Member::findOrFail($id);
         return view('search', compact('member'));
+    } else {
+        
+        return view('search'); 
     }
+}
+
+   
+
+public function search(Request $request)
+{
+    $request->validate([
+        'phone' => 'required|numeric|digits:10',
+    ]);
+
+    // Search for member by phone number
+    $member = Member::where('phone', $request->phone)->first();
+
+    // If a member is found, return the data, else return an error message
+    if ($member) {
+        return response()->json([
+            'status' => 'success',
+            'member' => $member
+        ]);
+    } else {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'No membership found with that phone number.'
+        ]);
+    }
+}
 }
