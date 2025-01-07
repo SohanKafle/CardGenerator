@@ -20,7 +20,8 @@
         <h2 class="text-2xl font-semibold text-gray-700 text-center mb-8">Register for Membership</h2>
 
         <!-- Form -->
-        <form action="#" method="POST">
+        <form action="{{route('member.store')}}" method="POST">
+            @csrf
             <!-- Full Name Input -->
             <div class="mb-6">
                 <label for="name" class="block text-gray-600 font-medium mb-2">Full Name</label>
