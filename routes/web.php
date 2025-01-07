@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', function () {
-    return view('search');
-});
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
+
+
+Route::post('/store', [MemberController::class, 'store'])->name('member.store');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

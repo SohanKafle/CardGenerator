@@ -37,6 +37,7 @@
         <div class="flex flex-wrap justify-center gap-8">
 
             <!-- Card 1 -->
+             
             <div class="max-w-sm w-full bg-white p-6 rounded-lg shadow-lg">
                 <div class="text-center mb-4">
                     <h2 class="text-xl font-semibold text-gray-800">Membership Details</h2>
@@ -49,11 +50,11 @@
                     </div>
                     <div class="flex justify-between mb-4">
                         <span class="font-medium">Name:</span>
-                        <span class="font-light">Sohan Kafle</span>
+                        <span class="font-light">asf</span>
                     </div>
                     <div class="flex justify-between mb-4">
                         <span class="font-medium">Phone Number:</span>
-                        <span class="font-light">9812211443</span>
+                        <span class="font-light">9876544</span>
                     </div>
                 </div>
             </div>

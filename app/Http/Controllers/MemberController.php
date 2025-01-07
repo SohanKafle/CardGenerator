@@ -34,7 +34,7 @@ class MemberController extends Controller
         $member->member_id = $this->generateMemberId();  // Auto-generate Member ID
         $member->save();
 
-        return redirect()->route('members.index')->with('success', 'Member created successfully!');
+        return redirect()->route('search')->with('success', 'Member created successfully!');
     }
 
     // Show form to edit a member

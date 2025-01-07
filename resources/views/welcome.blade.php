@@ -20,8 +20,8 @@
         <h2 class="text-2xl font-semibold text-gray-700 text-center mb-8">Register for Membership</h2>
 
         <!-- Form -->
-        <form action="#" method="POST">
-            <!-- Full Name Input -->
+        <form action="{{route('member.store')}}" method="POST">
+            @csrf
             <div class="mb-6">
                 <label for="name" class="block text-gray-600 font-medium mb-2">Full Name</label>
                 <input type="text" id="name" name="name" class="mt-2 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your Full Name" required>
@@ -42,7 +42,7 @@
 
             <!-- Search Membership Button -->
             <div class="text-center">
-                <a href="/search" class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 inline-block">
+                <a href="{{route('search')}}" class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 inline-block">
                     Search Membership
                 </a>
             </div>
