@@ -18,20 +18,23 @@ class MemberController extends Controller
 
     // Store a new member
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|unique:members,phone|numeric|digits:10',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'phone' => 'required|unique:members,phone|numeric|digits:10',
+    ]);
 
-        $member = new Member();
-        $member->name = $request->name;
-        $member->phone = $request->phone;
-        $member->member_id = $this->generateMemberId();  // Auto-generate Member ID
-        $member->save();
+    // Create a new member and save to the database
+    $member = new Member();
+    $member->name = $request->name;
+    $member->phone = $request->phone;
+    $member->member_id = $this->generateMemberId();  // Auto-generate Member ID
+    $member->save();
 
-        return redirect()->route('search')->with('success', 'Member created successfully!');
-    }
+    // Redirect to the search route with the member ID and success message
+    return redirect()->route('search', ['id' => $member->id])->with('success', 'Member created successfully!');
+}
+
 
     // Show form to edit a member
     public function edit($id)
