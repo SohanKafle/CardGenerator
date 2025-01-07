@@ -35,7 +35,7 @@
         <!-- Error Message -->
         <div id="errorMessage" class="text-center text-red-500 hidden mb-4"></div>
 
-        <!-- Member Card (will be shown dynamically) -->
+        <!-- Member Card for ajax -->
         <div id="memberCard" class="hidden flex flex-wrap justify-center gap-8">
             <div class="max-w-sm w-full h-64 bg-cover bg-center p-14 rounded-lg shadow-lg relative" style="background-image: url('{{ asset('images/card.jpg') }}'); background-size: cover; background-position: center;">
                 <div class="absolute top-[2rem] right-[10rem] p-2 text-white font-bold text-xl" id="memberId"></div>
@@ -51,6 +51,8 @@
         </div>
 
         <!-- Show Member Details if ID is provided -->
+        <!-- @php dd(isset($member)); @endphp -->
+
         @if(isset($member))
             <div class="flex flex-wrap justify-center gap-8">
                 <div class="max-w-sm w-full h-64 bg-cover bg-center p-14 rounded-lg shadow-lg relative" style="background-image: url('{{ asset('images/card.jpg') }}'); background-size: cover; background-position: center;">

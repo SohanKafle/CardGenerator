@@ -9,6 +9,7 @@ class SearchController extends Controller
 {
     public function index($id = null)
 {
+     dd($id);
     if ($id) {
        
         $member = Member::findOrFail($id);
