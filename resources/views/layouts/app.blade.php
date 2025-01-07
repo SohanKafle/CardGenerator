@@ -97,7 +97,7 @@
     <!-- Sidebar -->
     <aside id="sidebar" class="w-64 bg-white text-gray-900 shadow-lg flex flex-col fixed top-0 bottom-0 left-0 transition-all duration-300 overflow-y-auto z-10">
       <div class="p-4 flex items-center justify-center bg-white cursor-pointer" onclick="toggleSidebar()">
-        <img id="logo" src="{{ asset('images/logo.jpg') }}" alt="Logo" class="w-32 h-32 rounded-full border-2 border-gray-500 object-contain">
+        <img id="logo" src="{{ asset('images/logooo.jpg') }}" alt="Logo" class="w-32 h-32 rounded-full border-2 border-gray-500 object-contain">
         <button id="toggle-icon" onclick="toggleSidebar()" class="hidden px-4 py-2 bg-red-600 text-white rounded-full">
           <i class="ri-menu-3-fill"></i>
         </button>
@@ -109,26 +109,9 @@
           <span class="ml-4 font-semibold">Dashboard</span>
         </a>
         <a href="#" class="sidebar-link flex items-center px-6 py-4 hover:bg-red-600 hover:text-white transition-colors duration-200">
-          <i class="ri-grid-line"></i>
-          <span class="ml-4 font-semibold">Category</span>
+            <i class="ri-group-fill"></i>
+          <span class="ml-4 font-semibold">Members</span>
         </a>
-        <a href="#" class="sidebar-link flex items-center px-6 py-4 hover:bg-red-600 hover:text-white transition-colors duration-200">
-            <i class="ri-cup-line"></i>
-          <span class="ml-4 font-semibold">Food Items</span>
-        </a>
-        <a href="#" class="sidebar-link flex items-center px-6 py-4 hover:bg-red-600 hover:text-white transition-colors duration-200">
-            <i class="ri-calendar-check-fill"></i>
-            <span class="ml-4 font-semibold">Reservations</span>
-          </a>
-        <a href="#" class="sidebar-link flex items-center px-6 py-4 hover:bg-red-600 hover:text-white transition-colors duration-200">
-          <i class="ri-shopping-cart-2-fill"></i>
-          <span class="ml-4 font-semibold">Orders</span>
-        </a>
-        <a href="#" class="sidebar-link flex items-center px-6 py-4 hover:bg-red-600 hover:text-white transition-colors duration-200">
-          <i class="ri-image-fill"></i>
-          <span class="ml-4 font-semibold">Banners</span>
-        </a>
-
       </nav>
     </aside>
 
