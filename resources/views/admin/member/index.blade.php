@@ -57,9 +57,9 @@
                 <tr class="border border-gray-300">
                     <td class="border border-gray-300 px-4 py-2">{{ $loop->iteration }}</td>
 
-                    <td class="border border-gray-300 px-4 py-2">{{ $category->member_id }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $category->name }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $category->phone }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $member->member_id }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $member->name }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $member->phone }}</td>
                     </td>
                     <td class="px-2 py-2 mt-2 flex justify-center space-x-4">
                         <!-- Edit Icon -->
@@ -67,7 +67,7 @@
                             <i class="ri-edit-box-line text-white"></i>
                         </a>
                         <!-- Delete Icon -->
-                        <form action="{{ route('admin.member.delete', ['id' => $member->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                        <form action="{{ route('admin.member.destroy', ['id' => $member->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this member?');">
                             @csrf
                             @method('delete')
                             <button class="bg-red-500 hover:bg-red-700 p-2 w-10 h-10 rounded-full flex items-center justify-center">
@@ -75,14 +75,7 @@
                             </button>
                         </form>
 
-                        <!-- Settings Icon -->
-                        <form action="#" method="get">
-                            @csrf
-
-                            <button class="bg-green-500 hover:bg-green-700 p-2 w-10 h-10 rounded-full flex items-center justify-center">
-                                <i class="ri-settings-5-line text-white"></i>
-                            </button>
-                        </form>
+                       
                     </td>
                 </tr>
                 @endforeach
@@ -107,85 +100,13 @@
 
 </div>
 
-<script>
-    document.querySelectorAll('.toggle-switch').forEach(toggle => {
-        const dot = toggle.parentNode.querySelector('.dot');
 
-        // Apply the correct initial state
-        if (toggle.checked) {
-            dot.style.transform = 'translateX(100%)';
-            dot.style.backgroundColor = 'green';
-        } else {
-            dot.style.transform = 'translateX(0)';
-            dot.style.backgroundColor = 'white';
-        }
-
-        toggle.addEventListener('change', function() {
-            const categoryId = this.getAttribute('data-id');
-            const newState = this.checked ? 1 : 0;
-
-            // Toggle visual effect
-            if (this.checked) {
-                dot.style.transform = 'translateX(100%)';
-                dot.style.backgroundColor = 'green';
-            } else {
-                dot.style.transform = 'translateX(0)';
-                dot.style.backgroundColor = 'white';
-            }
-
-            // Send AJAX request to update the product status in the database
-            fetch(`/admin/category/update-toggle/${categoryId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}', // CSRF token for security
-                    },
-                    body: JSON.stringify({
-                        state: newState,
-                        type: 'status',
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.success) {
-                        // If the update fails, reset the toggle state
-                        this.checked = !this.checked;
-                        dot.style.transform = this.checked ? 'translateX(100%)' : 'translateX(0)';
-                        dot.style.backgroundColor = this.checked ? 'green' : 'white';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Reset the toggle state in case of an error
-                    this.checked = !this.checked;
-                    dot.style.transform = this.checked ? 'translateX(100%)' : 'translateX(0)';
-                    dot.style.backgroundColor = this.checked ? 'green' : 'white';
-                });
-        });
-    });
-</script>
+   
 
 <script>
-    // Function to generate slug from category name
-    function generateSlug() {
-        let input1 = document.getElementById('category').value;
-        let slug = input1.trim().replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('slug').value = slug;
-    }
+   
 
-    // Open the modal
-    document.getElementById('openModalButton').addEventListener('click', function() {
-        document.getElementById('categoryModal').classList.remove('modal-hidden');
-        document.getElementById('categoryModal').classList.add('modal-visible'); // Show modal
-        document.body.classList.add('overflow-hidden'); // Disable scrolling when modal is open
-    });
-
-    // Close the modal
-    document.getElementById('closeModalButton').addEventListener('click', function() {
-        document.getElementById('categoryModal').classList.remove('modal-visible');
-        document.getElementById('categoryModal').classList.add('modal-hidden'); // Hide modal
-        document.body.classList.remove('overflow-hidden'); // Re-enable scrolling
-    });
+   ;
 
 
     //search
