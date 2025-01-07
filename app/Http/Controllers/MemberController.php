@@ -10,8 +10,8 @@ class MemberController extends Controller
     // Show all members
     public function index()
     {
-        $members = Member::all();
-        return view('members.index', compact('members'));
+        $members = Member::paginate(5);
+        return view('admin.member.index', compact('members'));
     }
 
     // Show form to create a new member
