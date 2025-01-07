@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ Route::get('/search', function () {
 });
 
 Route::post('/store',[MemberController::class, 'store'])->name('member.store');
+Route::get('/search',[SearchController::class, 'search'])->name('search');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
