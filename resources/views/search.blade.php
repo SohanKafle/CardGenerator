@@ -69,69 +69,73 @@
         </div>
 
 
-        <!-- Show Member Details if ID is provided -->
-        @if (isset($member))
-            <div class="flex flex-wrap justify-center gap-8">
-                <div class="max-w-sm w-full h-64 bg-cover bg-center p-14 rounded-lg shadow-lg relative"
-                    style="background-image: url('{{ asset('images/card.jpg') }}'); background-size: cover; background-position: center;">
-                    <div class="absolute top-[2.1rem] right-[8rem] p-2 text-white font-bold">
-                        {{ $member->member_id }}
-                    </div>
-                    <div class="text-white mt-8">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-xl">{{ $member->name }}</span>
-                        </div>
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-xl">{{ $member->phone }}</span>
-                        </div>
-                    </div>
+<!-- Show Member Details if ID is provided -->
+@if (isset($member))
+    <div id="registeredMemberCard" class="flex flex-wrap justify-center gap-8 show-member">
+        <div class="max-w-sm w-full h-64 bg-cover bg-center p-14 rounded-lg shadow-lg relative"
+            style="background-image: url('{{ asset('images/card.jpg') }}'); background-size: cover; background-position: center;">
+            <div class="absolute top-[2.1rem] right-[8rem] p-2 text-white font-bold">
+                {{ $member->member_id }}
+            </div>
+            <div class="text-white mt-8">
+                <div class="flex justify-between mb-2">
+                    <span class="font-bold text-xl">{{ $member->name }}</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="font-bold text-xl">{{ $member->phone }}</span>
                 </div>
             </div>
-        @endif
+        </div>
+    </div>
+@endif
+
 
     </div>
 
     <script>
-        // AJAX Search Functionality
-        $(document).ready(function() {
-            $('#searchButton').on('click', function() {
-                var phone = $('#searchInput').val(); // Get the phone number from input field
+      $(document).ready(function() {
+    $('#searchButton').on('click', function() {
+        var phone = $('#searchInput').val(); // Get the phone number from input field
 
-                if (phone) {
-                    $.ajax({
-                        url: '{{ route('search') }}', // Your route for searching
-                        method: 'POST',
-                        data: {
-                            phone: phone,
-                            _token: '{{ csrf_token() }}' // CSRF Token for security
-                        },
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                // Hide error message and display member info
-                                $('#errorMessage').addClass('hidden');
-                                $('#memberCard').removeClass('hidden-member').addClass(
-                                    'show-member');
-                                $('#memberId').text(response.member.member_id);
-                                $('#memberName').text(response.member.name);
-                                $('#memberPhone').text(response.member.phone);
-                            } else {
-                                // Show error message if no member is found
-                                $('#memberCard').addClass('hidden-member').removeClass(
-                                    'show-member');
-                                $('#errorMessage').removeClass('hidden').text(response.message);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            $('#errorMessage').removeClass('hidden').text(
-                                'An error occurred. Please try again.');
-                        }
-                    });
-                } else {
-                    // Show error message if no phone number is provided
-                    $('#errorMessage').removeClass('hidden').text('Please enter a phone number.');
+        if (phone) {
+            $.ajax({
+                url: '{{ route('search') }}', // Your route for searching
+                method: 'POST',
+                data: {
+                    phone: phone,
+                    _token: '{{ csrf_token() }}' // CSRF Token for security
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // Hide the registered member card (if any)
+                        $('#registeredMemberCard').addClass('hidden-member').removeClass('show-member');
+
+                        // Hide the error message if any
+                        $('#errorMessage').addClass('hidden');
+
+                        // Display the searched member info
+                        $('#memberCard').removeClass('hidden-member').addClass('show-member');
+                        $('#memberId').text(response.member.member_id);
+                        $('#memberName').text(response.member.name);
+                        $('#memberPhone').text(response.member.phone);
+                    } else {
+                        // Hide the member card and show the error message
+                        $('#memberCard').addClass('hidden-member').removeClass('show-member');
+                        $('#errorMessage').removeClass('hidden').text(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#errorMessage').removeClass('hidden').text('An error occurred. Please try again.');
                 }
             });
-        });
+        } else {
+            // Show error message if no phone number is provided
+            $('#errorMessage').removeClass('hidden').text('Please enter a phone number.');
+        }
+    });
+});
+
+
     </script>
 
 </body>

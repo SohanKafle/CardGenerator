@@ -77,6 +77,7 @@ public function visits()
             $d->number_of_visits = $number_of_visits;
             $d->save();
         }
+        Session::put('visit', 'yes');
         Session::save();
     }
 }
