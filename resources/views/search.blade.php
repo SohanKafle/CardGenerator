@@ -12,10 +12,17 @@
     <div class="max-w-screen-xl mx-auto px-4 py-6">
 
         <!-- Back Button and Search Bar -->
-        <div class="flex justify-center items-center mb-6 space-x-4">
+        <div class="flex justify-between items-center mb-6">
+            <!-- Back Button -->
+            <a href="/" class="text-blue-600 hover:text-blue-800 focus:outline-none flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 inline-block mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+            </a>
 
             <!-- Search Bar -->
-            <div class="flex items-center space-x-2 border border-gray-300 rounded-lg p-1">
+            <div class="flex items-center space-x-0 border border-gray-300 rounded-lg p-1">
                 <!-- Search Input Field -->
                 <input type="text" id="searchInput" placeholder="Search Membership..." class="p-2 w-64 border-none rounded-l-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                 
@@ -24,16 +31,6 @@
                     Search
                 </a>
             </div>
-        </div>
-
-        <!-- Back Button -->
-        <div class="flex justify-start mb-6">
-            <a href="/" class="text-blue-600 hover:text-blue-800 focus:outline-none flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 inline-block mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                Back
-            </a>
         </div>
 
         <!-- Container for the cards -->
