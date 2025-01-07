@@ -18,6 +18,13 @@ Route::get('/search',[SearchController::class, 'index'])->name('search');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard');
+
+    Route::get('/members', [MemberController::class, 'index'])->name('admin.member.index');
+    Route::get('/members/create', [MemberController::class, 'create'])->name('member.create');
+    Route::post('/members', [MemberController::class, 'store'])->name('member.store');
+    Route::get('/members/{id}/edit', [MemberController::class, 'edit'])->name('member.edit');
+    Route::patch('/members/{id}', [MemberController::class, 'update'])->name('member.update');
+    Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
 });
 
 Route::middleware('auth')->group(function () {
