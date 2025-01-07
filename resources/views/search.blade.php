@@ -12,8 +12,9 @@
     <div class="max-w-screen-xl mx-auto px-4 py-6">
 
         <!-- Back Button and Search Bar -->
-        <div class="flex justify-between items-center mb-6">
-            <!-- Back Button -->
+        <div class="flex justify-between items-center mb-12">
+
+            <!-- Back Button (aligned left) -->
             <a href="/" class="text-blue-600 hover:text-blue-800 focus:outline-none flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 inline-block mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -21,38 +22,38 @@
                 Back
             </a>
 
-            <!-- Search Bar -->
-            <div class="flex items-center space-x-0 border border-gray-300 rounded-lg p-1">
+            
+            <div class="flex justify-center items-center space-x-0 border border-gray-300 rounded-lg mx-auto w-full max-w-3xl">
                 <!-- Search Input Field -->
-                <input type="text" id="searchInput" placeholder="Search Membership..." class="p-2 w-64 border-none rounded-l-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                <input type="text" id="searchInput" placeholder="Search with your number..." class="p-3 w-full border-none rounded-l-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                 
                 <!-- Search Button -->
-                <a href="/search-membership" class="bg-blue-600 text-white py-2 px-4 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 inline-block">
+                <a href="/search-membership" class="bg-blue-600 text-white py-3 px-6 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 inline-block">
                     Search
                 </a>
             </div>
-        </div>
 
+        </div>
         <!-- Container for the cards -->
         <div class="flex flex-wrap justify-center gap-8">
 
             <!-- Card 1 with Background Image -->
-            <div class="max-w-sm w-full bg-cover bg-center p-12 rounded-lg shadow-lg" style="background-image: url('{{asset('images/card.jpg')}}');">
+            <div class="max-w-sm w-full h-64 bg-cover bg-center p-14 rounded-lg shadow-lg relative" style="background-image: url('{{asset('images/card.jpg')}}'); background-size: cover; background-position: center;">
+                <!-- 001 Text at the top right -->
+                <div class="absolute top-[2rem] right-[10rem] p-2 text-white font-bold text-xl">
+                    001
+                </div>
 
-                <div class="text-white">
-                    <div class="flex justify-between mt-10 mb-4">
-                        <span class="font-light">001</span>
+                <div class="text-white mt-8">
+                    <div class="flex justify-between">
+                        <span class="font-bold text-xl">Sohan Kafle</span>
                     </div>
                     <div class="flex justify-between mb-4">
-                        <span class="font-medium">Name:</span>
-                        <span class="font-light">asf</span>
-                    </div>
-                    <div class="flex justify-between mb-4">
-                        <span class="font-medium">Phone Number:</span>
-                        <span class="font-light">9876544</span>
+                        <span class="font-bold text-xl">9812211443</span>
                     </div>
                 </div>
             </div>
+
 
         </div>
     </div>
