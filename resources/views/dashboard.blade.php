@@ -12,6 +12,7 @@
                 <i class="ri-group-line text-2xl"></i>
             </div>
         </div>
+        
         <!-- Total Visitors Card -->
         <div class="bg-white p-6 rounded-lg text-left hover:shadow-2xl transition-shadow duration-300 flex flex-row items-center justify-between w-full h-20 transform sm:-translate-y-8 lg:-translate-y-12 shadow-lg">
             <div>
