@@ -11,7 +11,8 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::paginate(5);
-        return view('admin.member.index', compact('members'));
+        return view('admin.member.index', [
+            'title' => 'Manage Members' ], compact('members'));
     }
 
    
@@ -32,7 +33,7 @@ class MemberController extends Controller
     $member->save();
 
     // Redirect to the search route with the member ID and success message
-    return redirect()->route('search', ['id' => $member->id])->with('success', 'Member created successfully!');
+    return redirect()->route('search.index', ['id' => $member->id])->with('success', 'Member created successfully!');
 }
 
 
@@ -40,7 +41,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::findOrFail($id);
-        return view('admin.member.edit', compact('member'));
+        return view('admin.member.edit', [
+            'title' => 'Manage Members' ], compact('member'));
     }
 
     // Update a member

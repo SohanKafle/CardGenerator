@@ -7,13 +7,10 @@ use App\Http\Controllers\SearchController;
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
+Route::get('/',[SearchController::class, 'welcome'])->name('welcome');
 Route::post('/store',[MemberController::class, 'store'])->name('member.store');
-Route::get('/search/{id?}',[SearchController::class, 'index'])->name('search');
+Route::get('/search/{id?}',[SearchController::class, 'index'])->name('search.index');
 Route::post('/search',[SearchController::class, 'search'])->name('search');
 
 
