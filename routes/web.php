@@ -11,16 +11,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', function () {
-    return view('search');
-});
 
 Route::post('/store',[MemberController::class, 'store'])->name('member.store');
-Route::get('/search',[SearchController::class, 'search'])->name('search');
+Route::get('/search',[SearchController::class, 'index'])->name('search');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard');
